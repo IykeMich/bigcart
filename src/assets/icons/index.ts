@@ -1,0 +1,33 @@
+// Centralized icon exports for consistent imports
+export { default as ArrowRight } from './arrow-right.svg';
+export { default as BackArrow } from './BackArrow.svg';
+export { default as BigCart } from './BigCart.svg';
+export { default as Email } from './Email.svg';
+export { default as EyeOff } from './eye-off.svg';
+export { default as EyeShow } from './eye-show.svg';
+export { default as Favorites } from './Favorites.svg';
+export { default as Google } from './Google.svg';
+export { default as Home } from './Home.svg';
+export { default as Padlock } from './Padlock.svg';
+export { default as Person } from './Person.svg';
+export { default as Profile } from './Profile.svg';
+export { default as Telephone } from './Telephone.svg';
+export { default as SearchIcon } from './SearchIcon.svg';
+export { default as FilterIcon } from './FilterIcon.svg';
+
+// Re-export commonly used icons with consistent naming
+export { default as ArrowRightIcon } from './arrow-right.svg';
+export { default as BackArrowIcon } from './BackArrow.svg';
+export { default as BigCartIcon } from './BigCart.svg';
+export { default as EmailIcon } from './Email.svg';
+export { default as EyeOffIcon } from './eye-off.svg';
+export { default as EyeShowIcon } from './eye-show.svg';
+export { default as FavoritesIcon } from './Favorites.svg';
+export { default as GoogleIcon } from './Google.svg';
+export { default as HomeIcon } from './Home.svg';
+export { default as PadlockIcon } from './Padlock.svg';
+export { default as PersonIcon } from './Person.svg';
+export { default as ProfileIcon } from './Profile.svg';
+export { default as TelephoneIcon } from './Telephone.svg';
+export { default as SearchIconIcon } from './SearchIcon.svg';
+export { default as FilterIconIcon } from './FilterIcon.svg';
