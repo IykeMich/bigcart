@@ -74,7 +74,7 @@ export const Router = () => {
     };
     
     // Initial route - start with MainApp for authenticated users
-    const initialRoute = 'splash';
+    const initialRoute = 'MainApp';
     
     return (
         <NavigationContainer 

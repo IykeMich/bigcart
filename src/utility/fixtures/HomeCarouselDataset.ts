@@ -26,7 +26,8 @@ export     const carouselSlides: HomeCarouselSlide[] = [
             id: 4,
             title: 'Premium quality guaranteed',
             description: 'Only the best quality products make it to your door',
-            image: require('@/assets/images/carousel/CarouselFour.png'),
+            image: require('@/assets/images/carousel/CarouselFour.jpg'),
+            // image: require('@/assets/images/carousel/CarouselFour.png'),
             backgroundColor: 'rgba(0, 0, 0, 0.2)'
         }
     ];

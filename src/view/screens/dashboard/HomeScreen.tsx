@@ -24,7 +24,7 @@ const HomeScreen = () => {
     return (
         <DefaultLayout 
             menuType="menu"
-            showHeader={true}
+            showHeader={false}
             // className='!bg-[#E5E5E5]/80'
             // className='!bg-[#E5E5E5]/10'
             className='bg-white'

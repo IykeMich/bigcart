@@ -65,6 +65,16 @@ export const RouteConstant = {
             name: "categories"
         }
     },
+    product: {
+        details: {
+            path: "stack/product/details",
+            name: "productDetails"
+        },
+        productsByCategory: {
+            path: "stack/product/product-by-category",
+            name: "productByCategory"
+        }
+    },
     cart: {
         main: {
             path: "tab/cart/main",

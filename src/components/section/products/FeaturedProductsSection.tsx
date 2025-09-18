@@ -9,9 +9,9 @@ import { products } from '@/utility/fixtures/ProductDataset'
 
 export default function FeaturedProductsSection() {
     function handleNavigateToCategory() {
-        console.log('Navigating to categories');
         RouterUtil.navigate("dashboard.categories");
     }
+
   return (
     <View>
         <View className='flex-row items-center justify-between mb-6'>
@@ -28,17 +28,22 @@ export default function FeaturedProductsSection() {
                 </TouchableOpacity>
             ))}
         </View> */}
-        <View className="flex-1 bg-gray-50 p-4">
-            <FlatList
-                data={products}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => (
-                <ProductCard product={item} onAddToCart={(id) => console.log("Added:", id)} />
-                )}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-            />
-        </View>
+        <FlatList
+            data={products}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+                <ProductCard 
+                    product={item} 
+                    onAddToCart={(id) => console.log("Added:", id)}
+                    onPress={() => RouterUtil.navigate('product.details', { product: item })}
+                />
+            )}
+            numColumns={2}
+            columnWrapperStyle={{ justifyContent: "space-between", paddingHorizontal: 8 }}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 20 }}
+            scrollEnabled={false}
+        />
 
     </View>
   )

@@ -10,7 +10,6 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function CategoriesCarousel() {
     function handleNavigateToCategory() {
-        console.log('Navigating to categories');
         RouterUtil.navigate("dashboard.categories");
     }
   return (
@@ -29,6 +28,7 @@ export default function CategoriesCarousel() {
             <TouchableOpacity
             key={item.id}
             className="flex flex-col items-center mb-6 rounded-lg justify-center"
+            onPress={() => RouterUtil.navigate("product.productsByCategory", { category: item.name })}
             >
             {item.icon && <item.icon width={52} height={52} />}
             <Text className="text-[10px] font-medium text-[#868889]">

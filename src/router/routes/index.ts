@@ -27,6 +27,7 @@ import { dashboardRoutes } from './dashboard-routes';
 import { profileRoutes } from './profile-routes';
 import { earningRoutes } from './earning-routes';
 import { fundingRoutes } from './funding-routes';
+import { productRoutes } from './product-routes';
 
 // Aggregate all routes
 export const routes: RouteType[] = [
@@ -36,4 +37,5 @@ export const routes: RouteType[] = [
     ...profileRoutes,
     ...earningRoutes,
     ...fundingRoutes,
+    ...productRoutes,
 ]

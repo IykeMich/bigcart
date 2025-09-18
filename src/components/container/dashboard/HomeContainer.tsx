@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { View, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
+import { View, FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import { DefaultTypography } from '@/components/text/DefaultTypography';
 import GradientButton from '@/components/button/GradientButton';
 import { DefaultTextInput } from '@/components/default/DefaultTextInput';
@@ -59,29 +59,56 @@ export const HomeContainer = ({
         onNavigateToProfile?.();
     }, [onNavigateToProfile]);
 
-// refreshControl={<RefreshControl refreshing={isLoading} onRefresh={handleRefresh} />}
+    // Prepare data for FlatList
+    const homeSections = [
+        { id: 'search', type: 'search' },
+        { id: 'carousel', type: 'carousel' },
+        { id: 'categories', type: 'categories' },
+        { id: 'featured', type: 'featured' }
+    ];
+
+    const renderHomeSection = ({ item }: { item: { id: string; type: string } }) => {
+        switch (item.type) {
+            case 'search':
+                return (
+                    <DefaultTextInput
+                        minContainerClassname='!bg-[#F4F5F9] !rounded-md mt-4'
+                        placeholder='Search keywords...' 
+                        leftIcon={SearchIcon} rightIcon={FilterIcon} 
+                    />
+                );
+            case 'carousel':
+                return (
+                    <View className='mt-2'>
+                        <HomeCarousel slides={carouselSlides} />
+                    </View>
+                );
+            case 'categories':
+                return (
+                    <View>
+                        <CategoriesCarousel />
+                    </View>
+                );
+            case 'featured':
+                return (
+                    <View className='mt-4'>
+                        <FeaturedProductsSection />
+                    </View>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
-        <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-            {/* Search Section */}
-            <DefaultTextInput
-                minContainerClassname='!bg-[#F4F5F9] !rounded-md'
-                placeholder='Search keywords...' 
-                leftIcon={SearchIcon} rightIcon={FilterIcon} />
-
-            {/* Carousel Section */}
-            <View className='mt-2'>
-                <HomeCarousel slides={carouselSlides} />
-            </View>
-
-            {/* Categories Section */}
-            <View>
-                <CategoriesCarousel />
-            </View>
-
-            {/* Featured Products Section */}
-            <FeaturedProductsSection />
-
-        </ScrollView>
+        <FlatList
+            data={homeSections}
+            renderItem={renderHomeSection}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+            refreshControl={<RefreshControl refreshing={isLoading} onRefresh={handleRefresh} />}
+            contentContainerStyle={{ paddingBottom: 20 }}
+        />
     );
 };
 

@@ -31,8 +31,8 @@ export const NativeStack = ({ initialRouteName }: NativeStackProps) => {
     const validatedRoutes = [...stackRoutes, mainAppRoute];
     
     // Debug logging
-    console.log('NativeStack - All routes:', validatedRoutes.length);
-    console.log('NativeStack - Route names:', validatedRoutes.map(r => r.name));
+    // console.log('NativeStack - All routes:', validatedRoutes.length);
+    // console.log('NativeStack - Route names:', validatedRoutes.map(r => r.name));
     
     return (
         <Stack.Navigator 

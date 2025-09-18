@@ -26,8 +26,7 @@ export const LoginContainer = ({
 
     // Event Handlers
     const handleLogin = useCallback(async () => {
-        RouterUtil.navigate("MainApp");
-
+        RouterUtil.navigate("dashboard.home");
     }, []);
 
     const handleNavigateToSignUp = useCallback(() => {

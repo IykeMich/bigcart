@@ -65,41 +65,14 @@ export class RouterUtil {
     static navigateByPath(path: string, params?: any): void {
         if (!navigationRef.isReady()) return;
         
-        // Special case for MainApp
-        if (path === 'MainApp') {
-            navigationRef.navigate('MainApp' as never, params);
-            return;
-        }
-        
         const routeInfo = this.getRouteInfo(path);
         if (!routeInfo) {
             console.warn(`Route not found for path: ${path}`);
             return;
         }
 
-        const [navigationType = ''] = path.split('/');
-        const normalizedType = navigationType.toLowerCase();
-
-        switch (normalizedType) {
-            case NavigationTypeConstant.stack.toLowerCase():
-                navigationRef.navigate(routeInfo.name as string, params);
-                break;
-            case NavigationTypeConstant.tab.toLowerCase():
-                navigationRef.navigate('MainApp' as never, { 
-                    screen: routeInfo.name, 
-                    params 
-                } as never);
-                break;
-            case NavigationTypeConstant.drawer.toLowerCase():
-                // Drawer not wired at root; fallback to MainApp
-                navigationRef.navigate('MainApp' as never, { 
-                    screen: routeInfo.name, 
-                    params 
-                } as never);
-                break;
-            default:
-                navigationRef.navigate(routeInfo.name as string, params);
-        }
+        // Navigate directly to the screen - no special MainApp handling needed
+        navigationRef.navigate(routeInfo.name as string, params);
     }
 
     /**
@@ -174,12 +147,6 @@ export class RouterUtil {
     static navigate(pathOrKey: string, params?: any): void {
         if (!navigationRef.isReady()) return;
 
-        // Special case for MainApp
-        if (pathOrKey === 'MainApp') {
-            navigationRef.navigate('MainApp' as never, params);
-            return;
-        }
-
         // If direct path like "stack/..." or "tab/..."
         if (pathOrKey.includes('/')) {
             this.navigateByPath(pathOrKey, params);
@@ -193,28 +160,7 @@ export class RouterUtil {
             return;
         }
 
-        const [navigationType = ''] = routeInfo.path.split('/');
-        const normalizedType = navigationType.toLowerCase();
-
-        switch (normalizedType) {
-            case NavigationTypeConstant.stack.toLowerCase():
-                navigationRef.navigate(routeInfo.name as string, params);
-                break;
-            case NavigationTypeConstant.tab.toLowerCase():
-                // Navigate to MainApp and then to the specific tab screen
-                navigationRef.navigate('MainApp' as never, { 
-                    screen: routeInfo.name, 
-                    params 
-                } as never);
-                break;
-            case NavigationTypeConstant.drawer.toLowerCase():
-                navigationRef.navigate('MainApp' as never, { 
-                    screen: routeInfo.name, 
-                    params 
-                } as never);
-                break;
-            default:
-                navigationRef.navigate(routeInfo.name as string, params);
-        }
+        // Navigate directly to the screen - simplified approach
+        navigationRef.navigate(routeInfo.name as string, params);
     }
 }
